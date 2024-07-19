@@ -10,9 +10,6 @@ application = Flask(__name__)
 app = application
 
 
-os.environ["LANGCHAIN_API_KEY"] = os.getenv("LANGCHAIN_API_KEY")
-os.environ["LANGCHAIN_TRACING_V2"] = "true"
-os.environ["LANGCHAIN_PROJECT"] = os.getenv("LANGCHAIN_PROJECT")
 
 @app.route('/send-message', methods=["GET","POST"])
 def send_message():
@@ -34,4 +31,4 @@ def send_message():
         return jsonify({'reply': bot_reply})
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=5000)

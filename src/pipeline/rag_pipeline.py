@@ -1,3 +1,5 @@
+import os
+
 from langchain_groq import ChatGroq
 from langchain_community.vectorstores import FAISS
 from langchain_openai.embeddings import OpenAIEmbeddings
@@ -9,6 +11,14 @@ from langchain.chains.combine_documents import create_stuff_documents_chain
 from src.utils import get_session_history
 from src.exception import CustomException
 from src.logger import logger
+
+from dotenv import load_dotenv
+load_dotenv()
+
+os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_API_KEY")
+os.environ["LANGCHAIN_API_KEY"] = os.getenv("LANGCHAIN_API_KEY")
+os.environ["LANGCHAIN_TRACING_V2"] = "true"
+os.environ["LANGCHAIN_PROJECT"] = os.getenv("LANGCHAIN_PROJECT")
 
 class ragPipeline():
     def __init__(self):
@@ -24,7 +34,7 @@ class ragPipeline():
             logger.info("Loading FAISS DB and getting retriever from it")
 
             embeddings = OpenAIEmbeddings(model="text-embedding-3-large")
-            faissDB = FAISS.load_local(folder_path="/Users/sanketsaxena/Desktop/eccomChatbot/Artifacts",index_name="faissDB",embeddings=embeddings,allow_dangerous_deserialization=True)
+            faissDB = FAISS.load_local(folder_path="/app/Artifacts",index_name="faissDB",embeddings=embeddings,allow_dangerous_deserialization=True)
             retriever = faissDB.as_retriever()
 
             logger.info("Loaded FAISS DB and got retriever from it")
