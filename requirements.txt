@@ -10,3 +10,4 @@ datasets
 faiss-cpu
 flask
 dvc
+dvc-s3
