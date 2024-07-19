@@ -1,0 +1,7 @@
+[ 2024-07-19 13:31:53,042  97 werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000]
+[ 2024-07-19 13:31:53,042  97 werkzeug - INFO - [33mPress CTRL+C to quit[0m]
+[ 2024-07-19 13:31:53,043  97 werkzeug - INFO -  * Restarting with stat]
+[ 2024-07-19 13:31:53,731  97 werkzeug - WARNING -  * Debugger is active!]
+[ 2024-07-19 13:31:53,739  97 werkzeug - INFO -  * Debugger PIN: 757-384-127]
+[ 2024-07-19 13:32:01,022  97 werkzeug - INFO - 127.0.0.1 - - [19/Jul/2024 13:32:01] "GET /send-message HTTP/1.1" 200 -]

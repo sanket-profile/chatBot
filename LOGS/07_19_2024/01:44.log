@@ -1,0 +1,5 @@
+[ 2024-07-19 01:44:28,349  21 COMPONENTS - INFO - Initializing our llm model]
+[ 2024-07-19 01:44:28,388  25 COMPONENTS - INFO - Initialized our llm model]
+[ 2024-07-19 01:44:28,388  26 COMPONENTS - INFO - Loading FAISS DB and getting retriever from it]
+[ 2024-07-19 01:44:28,401  97 faiss.loader - INFO - Loading faiss.]
+[ 2024-07-19 01:44:28,409  99 faiss.loader - INFO - Successfully loaded faiss.]

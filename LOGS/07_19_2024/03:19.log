@@ -1,0 +1,4 @@
+[ 2024-07-19 03:19:25,493  97 werkzeug - WARNING -  * Debugger is active!]
+[ 2024-07-19 03:19:25,499  97 werkzeug - INFO -  * Debugger PIN: 757-384-127]
+[ 2024-07-19 03:19:27,491  97 werkzeug - INFO - 127.0.0.1 - - [19/Jul/2024 03:19:27] "[31m[1mGET /send-message HTTP/1.1[0m" 415 -]
+[ 2024-07-19 03:22:04,419  97 werkzeug - INFO -  * Detected change in '/Users/sanketsaxena/Desktop/eccomChatbot/application.py', reloading]

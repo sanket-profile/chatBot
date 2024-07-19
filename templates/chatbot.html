@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .chat-container {
+            width: 100%;
+            max-width: 600px;
+            height: 80vh;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .chatbox {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .message {
+            max-width: 70%;
+            padding: 10px 15px;
+            border-radius: 20px;
+            position: relative;
+        }
+
+        .user-message {
+            background-color: #DCF8C6;
+            align-self: flex-end;
+            border-bottom-right-radius: 0;
+        }
+
+        .bot-message {
+            background-color: #f1f1f1;
+            align-self: flex-start;
+            border-bottom-left-radius: 0;
+        }
+
+        .input-container {
+            display: flex;
+            border-top: 1px solid #ddd;
+        }
+
+        .input {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            border-radius: 0;
+            outline: none;
+            font-size: 16px;
+        }
+
+        .submit {
+            padding: 0 20px;
+            border: none;
+            background-color: #007BFF;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .submit:hover {
+            background-color: #0056b3;
+        }
+        .chat-header {
+            background-color: #007BFF;
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            border-bottom: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <div class="chat-container">
+        <div class="chat-header">CHATBOT</div>
+        <div id="chatbox" class="chatbox"></div>
+        <div class="input-container">
+            <input type="text" id="input" class="input" placeholder="Type your message here">
+            <button id="submit" class="submit">Send</button>
+        </div>
+    </div>
+
+    <script>
+        // Function to generate a new session ID
+        function generateSessionId() {
+            return 'sess_' + Math.random().toString(36).substr(2, 9);
+        }
+
+        // Function to initialize session ID
+        function initializeSession() {
+            const sessionId = generateSessionId();
+            localStorage.setItem('session_id', sessionId);
+            return sessionId;
+        }
+
+        // Check if a session ID already exists in localStorage
+        let sessionId = localStorage.getItem('session_id');
+        if (!sessionId) {
+            sessionId = initializeSession();
+        }
+
+        document.getElementById('submit').addEventListener('click', async () => {
+            const inputField = document.getElementById('input');
+            const message = inputField.value;
+            inputField.value = '';
+            
+            // Display the user's message
+            const chatbox = document.getElementById('chatbox');
+            const userMessageDiv = document.createElement('div');
+            userMessageDiv.className = 'message user-message';
+            userMessageDiv.textContent = `${message}`;
+            chatbox.appendChild(userMessageDiv);
+            chatbox.scrollTop = chatbox.scrollHeight;
+
+            // Send the message to the server
+            const response = await fetch('/send-message', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ message: message, session_id: sessionId }),
+            });
+
+            const data = await response.json();
+
+            // Display the chatbot's response with line breaks
+            const botMessageDiv = document.createElement('div');
+            botMessageDiv.className = 'message bot-message';
+            botMessageDiv.innerHTML = `${data.reply.replace(/\n/g, '<br>')}`;
+            chatbox.appendChild(botMessageDiv);
+            chatbox.scrollTop = chatbox.scrollHeight;
+        });
+
+
+        // Clear session ID on page unload (refresh)
+        window.addEventListener('beforeunload', () => {
+            localStorage.removeItem('session_id');
+        });
+    </script>
+</body>
+</html>

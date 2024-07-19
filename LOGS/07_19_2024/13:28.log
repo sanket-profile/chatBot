@@ -1,0 +1,7 @@
+[ 2024-07-19 13:28:54,239  97 werkzeug - WARNING -  * Debugger is active!]
+[ 2024-07-19 13:28:54,247  97 werkzeug - INFO -  * Debugger PIN: 757-384-127]
+[ 2024-07-19 13:29:10,370  97 werkzeug - INFO - 127.0.0.1 - - [19/Jul/2024 13:29:10] "GET /send-message HTTP/1.1" 200 -]
+[ 2024-07-19 13:30:53,803  97 werkzeug - INFO - 127.0.0.1 - - [19/Jul/2024 13:30:53] "GET /send-message HTTP/1.1" 200 -]
+[ 2024-07-19 13:30:54,744  97 werkzeug - INFO - 127.0.0.1 - - [19/Jul/2024 13:30:54] "GET /send-message HTTP/1.1" 200 -]
+[ 2024-07-19 13:30:55,331  97 werkzeug - INFO - 127.0.0.1 - - [19/Jul/2024 13:30:55] "GET /send-message HTTP/1.1" 200 -]
+[ 2024-07-19 13:31:27,081  97 werkzeug - INFO - 127.0.0.1 - - [19/Jul/2024 13:31:27] "GET /send-message HTTP/1.1" 200 -]

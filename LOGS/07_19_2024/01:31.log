@@ -1,0 +1,6 @@
+[ 2024-07-19 01:31:09,652  24 COMPONENTS - INFO - Starting Data Ingestion]
+[ 2024-07-19 01:31:11,087  28 COMPONENTS - INFO - Data Ingestion Completed]
+[ 2024-07-19 01:31:11,089  29 COMPONENTS - INFO - Saving the Raw Data in Artifacts Folder]
+[ 2024-07-19 01:31:11,106  33 COMPONENTS - INFO - Saved the raw data into Artifacts Folder]
+[ 2024-07-19 01:31:11,106  25 COMPONENTS - INFO - Starting Data Transformation]
+[ 2024-07-19 01:31:11,106  26 COMPONENTS - INFO - Adding a random Price column in df]
